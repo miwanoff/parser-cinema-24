@@ -17,3 +17,20 @@ if (($handle = fopen("contacts.csv", "r")) !== false) {
 } else {
     echo "Can`t open file";
 }
+
+$csv = array_map('str_getcsv', file('contacts.csv'));
+
+print_r($csv);
+
+$list = array(
+    array('aaa', 'bbb', 'ccc', 'dddd'),
+    array('123', '456', '789'),
+    array('aaa', 'bbb'),
+);
+
+$fp = fopen('file.csv', 'w');
+
+foreach ($csv as $fields) {
+    fputcsv($fp, $fields);
+}
+fclose($fp);
