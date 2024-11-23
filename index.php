@@ -9,12 +9,22 @@ $links = [];
 $names = [];
 
 //$count = count($palladium->find('.poster span.movie-name'));
-$count = count($palladium->find('.film-slider .poster a:nth-child(1)'));
+$count = count($palladium->find('.film-slider .poster a:nth-child(2) a'));
 echo $count;
-
-if (count($palladium->find('.film-slider .poster a:nth-child(2)'))) {
-    foreach ($palladium->find('.film-slider .poster a:nth-child(2)') as $a) {
+$p_links = $palladium->find('.film-slider .poster a:nth-child(2) a');
+if (count($p_links)) {
+    foreach ($p_links as $a) {
         $links[] = $a->href;
+        $inner[] = $a->innertext;
+    }
+}
+print_r($links);
+
+print_r($inner);
+
+if (count($palladium->find('.poster span.movie-name'))) {
+    foreach ($palladium->find('.poster span.movie-name') as $a) {
+        // $links[] = $a->href;
         $names[] = $a->innertext;
     }
 }
