@@ -10,10 +10,10 @@ example for that.
 - It is not possible to create nodes via `->outertext`, `->innertext`, or
 `->plaintext`. These properties only change the text representation of a node
 and will return undesired results if used incorrectly.
-- Use [`$html->createElement`](/api/HtmlDocument/createElement) and
-[`$html->createTextNode`](/api/HtmlDocument/createTextNode) to create
+- Use [`$html->createElement`](/api/simple_html_dom/createElement) and
+[`$html->createTextNode`](/api/simple_html_dom/createTextNode) to create
 new nodes.
-- Use [`$node->appendChild`](/api/HtmlNode/appendChild) to add a
+- Use [`$node->appendChild`](/api/simple_html_dom_node/appendChild) to add a
 node as child to another node.
 - Nodes can be combined in any order.
 
@@ -21,10 +21,10 @@ node as child to another node.
 
 ```php
 <?php
+
 // This example illustrates adding new elements to the DOM.
 
-require_once 'HtmlDocument.php';
-use simplehtmldom\HtmlDocument;
+require_once 'simple_html_dom.php';
 
 /***************************** table data *************************************/
 
@@ -59,8 +59,7 @@ EOD;
 
 /***************************** code *******************************************/
 
-$html = new HtmlDocument();
-$html->load($doc);
+$html = str_get_html($doc);
 $body = $html->find('body', 0);
 $table = $html->createElement('table');
 

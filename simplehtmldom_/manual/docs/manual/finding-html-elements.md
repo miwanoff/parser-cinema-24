@@ -2,7 +2,7 @@
 title: Finding HTML Elements
 ---
 
-## By tag name
+# Finding elements by tag name
 
 ```php
 // Find all anchors, returns a array of element objects
@@ -18,7 +18,7 @@ $ret = $html->find('a', 0);
 $ret = $html->find('a', -1);
 ```
 
-## By class name or id
+# Finding elements by class name or id
 
 ```php
 // Find all element which id=foo
@@ -28,7 +28,7 @@ $ret = $html->find('#foo');
 $ret = $html->find('.foo');
 ```
 
-## By attribute
+# Finding elements by attribute
 
 ```php
 // Find all <div> with the id attribute
@@ -44,7 +44,21 @@ $ret = $html->find('a[title], img[title]');
 $ret = $html->find('*[id]');
 ```
 
-## Descendants
+## Attribute filters
+
+Supports these operators in attribute selectors:
+
+Filter | Description |
+-----|-----------|
+`[attribute]` | Matches elements that **have** the specified attribute.
+`[!attribute]` | Matches elements that **don't have** the specified attribute.
+`[attribute=value]` | Matches elements that have the specified attribute with a **certain value**.
+`[attribute!=value]` | Matches elements that **don't have** the specified attribute with a certain value.
+`[attribute^=value]` | Matches elements that have the specified attribute and it **starts** with a certain value.
+`[attribute$=value]` | Matches elements that have the specified attribute and it **ends** with a certain value.
+`[attribute*=value]` | Matches elements that have the specified attribute and it **contains** a certain value.
+
+# Finding descendants
 
 ```php
 // Find all <li> in <ul>
@@ -60,7 +74,7 @@ $es = $html->find('table.hello td');
 $es = $html->find('table td[align=center]');
 ```
 
-## Nested elements
+# Finding nested elements
 
 ```php
 // Find all <li> in <ul>
@@ -76,7 +90,7 @@ foreach($html->find('ul') as $ul)
 $e = $html->find('ul', 0)->find('li', 0);
 ```
 
-## Text, comments and CDATA
+# Finding text blocks and comments
 
 ```php
 // Find all text blocks
@@ -84,7 +98,4 @@ $es = $html->find('text');
 
 // Find all comment (<!--...-->) blocks
 $es = $html->find('comment');
-
-// Find CDATA blocks
-$es = $html->find('cdata');
 ```

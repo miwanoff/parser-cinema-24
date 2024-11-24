@@ -1,6 +1,4 @@
----
-title: PHP Simple HTML DOM Parser
----
+# PHP Simple HTML DOM Parser
 
 A fast, simple and reliable HTML document parser for PHP.
 

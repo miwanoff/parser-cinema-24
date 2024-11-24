@@ -1,12 +1,12 @@
 <?php
 
-require "./simplehtmldom/simple_html_dom.php";
+require "./simplehtmldom_/simple_html_dom.php";
 
 $palladium = file_get_html("https://www.palladium-cinema.com.ua/");
 
 //echo $palladium;
 $links = [];
-$names = [];
+$inner = [];
 
 //$count = count($palladium->find('.poster span.movie-name'));
 $count = count($palladium->find('.film-slider .poster a:nth-child(2) a'));
@@ -37,8 +37,8 @@ if (count($palladium->find('.poster span.movie-name'))) {
 
 $ul = [];
 $ul[] = "<ul>";
-for ($i = 0; $i < count($names); $i++) {
-    $ul[] = "<li><strong>Назва: </strong><a href='{$links[$i]}'>{$names[$i]}</a></li>";
+for ($i = 0; $i < count($inner); $i++) {
+    $ul[] = "<li><strong>Назва: </strong><a href='{$links[$i]}'>{$inner[$i]}</a></li>";
 }
 $ul[] = "</ul>";
 $content = implode("\n", $ul);
